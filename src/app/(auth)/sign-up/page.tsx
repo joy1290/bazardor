@@ -15,18 +15,26 @@ interface SignUpFormDataType {
 }
 
 export const handleGoogleSignIn = async () => {
-    const data = await signIn.social({
-        provider: "google"
-    })
-    toast.success("Login successfully")
+    const { error } = await signIn.social({
+        provider: "google",
+        callbackURL: "/",
+    });
 
-}
+    if (error) {
+        toast.error(error.message || "Google login failed");
+    }
+};
+
 export const handleGithubSignIn = async () => {
-    const data = await signIn.social({
+    const { error } = await signIn.social({
         provider: "github",
-    })
-    toast.success("Login successfully")
-}
+        callbackURL: "/",
+    });
+
+    if (error) {
+        toast.error(error.message || "GitHub login failed");
+    }
+};
 export default function SignUpPage() {
     const router = useRouter();
 
@@ -53,6 +61,7 @@ export default function SignUpPage() {
             return
         }
         router.push("/")
+
         toast.success(`WELCOME ${getUsersData.name}`)
 
     }
@@ -128,7 +137,7 @@ export default function SignUpPage() {
 
                 </div>
 
-                
+
                 <div className="mt-6 text-center">
                     <Link
                         href="/"

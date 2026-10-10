@@ -1,6 +1,8 @@
 import { ProductCommonDataType } from "@/TypeScript/Type";
 import HeroMain from "../components/Hero/HeroMain";
 import ProductCard from "../components/ProductCard/ProductCard";
+import { Suspense } from "react";
+import ProductCardSkeleton from "../components/ProductCard/loading";
 
 const allProductDataAPIResponse = async (): Promise<ProductCommonDataType[]> => {
   const response = await fetch(`${process.env.ALL_PRODUCT_API}`);
@@ -26,7 +28,11 @@ export default async function Home() {
           <h1 className="text-xl font-bold sm:text-2xl"><span className="m-1 text-lg text-red-600 sm:text-xl">▲</span>আজ দাম বেড়েছে</h1>
 
           <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {filterTopPCTProduct.slice(0, 6).map((item) => (<ProductCard key={item.id} productData={item}/>))}
+            {filterTopPCTProduct.slice(0, 6).map((item) => (
+              <Suspense fallback={<ProductCardSkeleton/>} key={item.id}>
+              <ProductCard key={item.id} productData={item}/>
+              </Suspense>
+              ))}
           </div>
         </div>
 
@@ -35,7 +41,11 @@ export default async function Home() {
             <span className="m-1 text-lg text-green-600 sm:text-xl">▼</span>আজ দাম কমেছে</h1>
 
           <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {filterTopDownPCTProduct.slice(0, 6).map((item) => (<ProductCard key={item.id} productData={item}/>))}
+            {filterTopDownPCTProduct.slice(0, 6).map((item) => (
+              <Suspense fallback={<ProductCardSkeleton/>} key={item.id}>
+              <ProductCard productData={item}/>
+              </Suspense>
+              ))}
           </div>
         </div>
 
@@ -44,7 +54,11 @@ export default async function Home() {
           <p className="mt-1 text-sm text-gray-500 sm:text-base">মোট {getAllProductData.length.toLocaleString("bn-BD")}টি পণ্য দেখানো হচ্ছে</p>
           
           <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {getAllProductData.map((item) => (<ProductCard key={item.id} productData={item}/>))}
+            {getAllProductData.map((item) => (
+              <Suspense fallback={<ProductCardSkeleton/>} key={item.id}>
+              <ProductCard key={item.id} productData={item}/>
+              </Suspense>
+              ))}
           </div>
           
         </div>

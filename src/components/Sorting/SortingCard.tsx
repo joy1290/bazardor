@@ -1,7 +1,8 @@
 'use client'
 import { ProductCommonDataType } from "@/TypeScript/Type";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import ProductCard from "../ProductCard/ProductCard";
+import ProductCardSkeleton from "../ProductCard/loading";
 
 interface SortingCardProps {
     getProductData: ProductCommonDataType[]
@@ -37,7 +38,11 @@ export default function SortCard({ getProductData }: SortingCardProps) {
 
             <p className="mt-5 text-sm text-gray-500">মোট {sortedData.length.toLocaleString("bn-BD")}টি পণ্য দেখানো হচ্ছে</p>
             <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                {sortedData.map((item) => (<ProductCard key={item.id} productData={item} />))}
+                {sortedData.map((item) => (
+                    <Suspense fallback={<ProductCardSkeleton/>} key={item.id}>
+                    <ProductCard key={item.id} productData={item} />
+                    </Suspense>
+                    ))}
             </div>
         </>
 
