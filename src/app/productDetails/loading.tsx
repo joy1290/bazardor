@@ -30,12 +30,12 @@ export default function DetailsSkeleton() {
                 ))}
             </div>
 
-            {/* Market Price Section Title */}
+        
             <div className="mt-5 px-2">
                 <div className="h-7 w-64 max-w-full rounded-md bg-gray-200" />
             </div>
 
-            {/* Market Price Table */}
+            
             <div className="my-4 overflow-hidden rounded-2xl border border-gray-300 bg-white shadow-sm">
                 <div className="overflow-x-auto">
                     <table className="w-full min-w-[700px] border-collapse text-left">
