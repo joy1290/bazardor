@@ -11,7 +11,7 @@ icon: string;
 const getCategory = async (
 categoryId: string
 ): Promise<CategoryData> => {
-const url = `https://api.api-store.workers.dev/api/bazardor/categories/${encodeURIComponent(categoryId)}`;
+const url = `https://api.abcz.workers.dev/api/bazardor/categories/${encodeURIComponent(categoryId)}`;
 
 const response = await fetch(url);
 
@@ -33,7 +33,7 @@ return response.json();
 const getCategoryProducts = async (
 categoryId: string
 ): Promise<ProductCommonDataType[]> => {
-const url = `https://api.api-store.workers.dev/api/bazardor/products?category=${encodeURIComponent(categoryId)}`;
+const url = `https://api.abcz.workers.dev/api/bazardor/products?category=${encodeURIComponent(categoryId)}`;
 
 const response = await fetch(url);
 

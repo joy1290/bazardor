@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
 import { Slide, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import { AvatarContextProvider, ShowProfileCardContext } from "./context/ProfileAvatar";
+import { AvatarContextProvider} from "../context/ProfileAvatar";
 
 
 const hindSiliguri = Hind_Siliguri({

@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import ProfileCard from "./ProfileCard";
 import { useContext } from "react";
-import { ShowProfileCardContext } from "@/app/context/ProfileAvatar";
+import { ShowProfileCardContext } from "@/context/ProfileAvatar";
 
 export default function AuthButton() {
   const { data: session, isPending } = useSession();

@@ -4,7 +4,7 @@ import { signOut, updateUser, useSession } from "@/lib/auth-client"
 import { useRouter } from "next/navigation";
 import { useContext } from "react";
 import { toast } from "react-toastify";
-import { ShowProfileCardContext } from "../context/ProfileAvatar";
+import { ShowProfileCardContext } from "../../context/ProfileAvatar";
 
 export default function ProfilePage() {
     const { data: session} = useSession();
