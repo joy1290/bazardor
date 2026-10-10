@@ -1,69 +1,55 @@
-import Image from "next/image";
+import { ProductCommonDataType } from "@/TypeScript/Type";
+import HeroMain from "../components/Hero/HeroMain";
+import ProductCard from "../components/ProductCard/ProductCard";
 
-export default function Home() {
+const allProductDataAPIResponse = async (): Promise<ProductCommonDataType[]> => {
+  const response = await fetch(`${process.env.ALL_PRODUCT_API}`);
+  const data = await response.json();
+
+  return data;
+}
+
+export default async function Home() {
+  const getAllProductData = await allProductDataAPIResponse();
+  const todayUpPriceProduct = getAllProductData.filter(item => item.change.dir === "up");
+  const todayDownPriceProduct = getAllProductData.filter(item => item.change.dir === "down");
+  const filterTopDownPCTProduct = todayDownPriceProduct.sort((a, b) => a.change.pct - b.change.pct);
+  const filterTopPCTProduct = todayUpPriceProduct.sort((a, b) => b.change.pct - a.change.pct);
+
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      <HeroMain />
+
+      <section id="products" className="container mx-auto mt-8 px-4 sm:px-6">
+        <div className="my-3">
+          <h1 className="text-xl font-bold sm:text-2xl"><span className="m-1 text-lg text-red-600 sm:text-xl">▲</span>আজ দাম বেড়েছে</h1>
+
+          <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {filterTopPCTProduct.slice(0, 6).map((item) => (<ProductCard key={item.id} productData={item}/>))}
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className="mt-10">
+          <h1 className="text-xl font-bold sm:text-2xl">
+            <span className="m-1 text-lg text-green-600 sm:text-xl">▼</span>আজ দাম কমেছে</h1>
+
+          <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {filterTopDownPCTProduct.slice(0, 6).map((item) => (<ProductCard key={item.id} productData={item}/>))}
+          </div>
         </div>
-      </main>
-    </div>
+
+        <div className="mt-10">
+          <h1 className="text-xl font-bold sm:text-2xl">সব পণ্য </h1>
+          <p className="mt-1 text-sm text-gray-500 sm:text-base">মোট {getAllProductData.length.toLocaleString("bn-BD")}টি পণ্য দেখানো হচ্ছে</p>
+          
+          <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {getAllProductData.map((item) => (<ProductCard key={item.id} productData={item}/>))}
+          </div>
+          
+        </div>
+      </section>
+
+    </>
   );
 }

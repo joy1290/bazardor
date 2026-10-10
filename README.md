@@ -1,36 +1,105 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛒 বাজার দর | BazarDor
 
-## Getting Started
+### Your Smart Guide to Everyday Market Prices in Bangladesh
 
-First, run the development server:
+BazarDor is a web-based market price information platform designed to help people explore everyday products and check market prices easily. It provides a simple and user-friendly interface to browse products, explore categories, and access product details.
+
+## 🚀 Technologies Used
+
+- **Next.js** — React framework for building the web application
+- **React.js** — Component-based user interface
+- **TypeScript** — Type-safe development
+- **Tailwind CSS** — Responsive and modern UI styling
+- **REST API** — Fetching product and category data
+- **Git & GitHub** — Version control and project management
+- **Vercel** — Deployment platform
+
+## ✨ Key Features
+
+1. **🛍️ Product Listing** — Browse available products and their information in one place.
+2. **📂 Category-Based Browsing** — Explore products by category for easier navigation.
+3. **🔎 Product Details** — View detailed information about individual products.
+4. **⚡ API Integration** — Fetch product and category data dynamically from APIs.
+5. **📱 Responsive Design** — Enjoy a user-friendly interface across desktop, tablet, and mobile devices.
+
+## 🎯 Project Goals
+
+- Make market product information easier to access.
+- Provide a clean and intuitive browsing experience.
+- Organize products into categories for convenient discovery.
+- Build a scalable web application using modern web technologies.
+
+## 🖥️ Getting Started
+
+### Prerequisites
+
+Make sure you have the following installed:
+
+- Node.js
+- npm
+- Git
+
+### Installation
+
+**1. Clone the repository**
+
+```bash
+git clone YOUR_GITHUB_REPOSITORY_URL
+```
+
+**2. Navigate to the project directory**
+
+```bash
+cd bazardor
+```
+
+**3. Install dependencies**
+
+```bash
+npm install
+```
+
+**4. Configure environment variables**
+
+Create a `.env.local` file in the project root and add the API URLs required by the application.
+
+```env
+ALL_CATEGORIES_API=your_categories_api_url
+ALL_PRODUCT_API=your_products_api_url
+CATEGORY_BY_FILTER_PRODUCT_API=your_category_filter_api_url
+```
+
+Replace the placeholder values with your actual API endpoints.
+
+**5. Start the development server**
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Project Highlights
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Modern Next.js App Router architecture
+- Reusable React components
+- TypeScript-based development
+- Dynamic API data fetching
+- Organized product and category navigation
 
-## Learn More
+## 🔮 Future Improvements
 
-To learn more about Next.js, take a look at the following resources:
+- Search products by name
+- Add price comparison and price history
+- Introduce product filtering and sorting
+- Add user authentication and personalized features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 👨‍💻 Developer
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Developed as a web development project using modern frontend technologies.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+⭐ **If you find this project useful, consider giving it a star on GitHub!**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**BazarDor — Making Market Information Easier to Explore.**
