@@ -94,7 +94,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 - Introduce product filtering and sorting
 - Add user authentication and personalized features
 
-## 👨‍💻 Developer
+<!-- ## 👨‍💻 Developer
 
 Developed as a web development project using modern frontend technologies.
 
@@ -102,4 +102,4 @@ Developed as a web development project using modern frontend technologies.
 
 ⭐ **If you find this project useful, consider giving it a star on GitHub!**
 
-**BazarDor — Making Market Information Easier to Explore.**
+**BazarDor — Making Market Information Easier to Explore.** -->
