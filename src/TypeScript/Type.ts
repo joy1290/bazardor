@@ -1,4 +1,4 @@
-// https://api.abcz.workers.dev/api/bazardor/categories
+// https://openapi.programming-hero.com/api/bazardor/categories
 
 
 export interface ProductCategoriesDataType{
