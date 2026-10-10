@@ -120,7 +120,7 @@ export default async function ProductDetails({
                         </div>
                     </div>
 
-                    {/* Today's Price */}
+                    
                     <div className="w-full shrink-0 rounded-xl bg-gray-50 px-4 py-3 sm:w-44 sm:px-5 sm:py-4">
                         <p className="text-sm text-gray-600">
                             আজকের দাম
