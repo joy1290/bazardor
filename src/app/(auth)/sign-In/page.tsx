@@ -97,7 +97,7 @@ export default function SignInPage() {
 
                 </div>
 
-                {/* ব্যাক টু হোম লিংক */}
+            
                 <div className="mt-6 text-center">
                     <Link 
                         href="/" 
